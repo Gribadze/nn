@@ -1,0 +1,15 @@
+[
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
+            "bin/obj/main.o", 
+            "src/main.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/main.cpp"
+    }
+]
