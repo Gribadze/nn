@@ -5,13 +5,14 @@
 #include <NN/Neuron.h>
 
 void ActivationTest() {
+    std::cout << "----------ActivationTest----------" << std::endl;
     Activation::Step step;
-    Activation::Linear linear(0.5f);
+    Activation::Linear linear(0.5);
     Activation::Sigmoid sigmoid;
     Activation::Tanh tanh;
     Activation::ReLu reLu;
-    Activation::LeakyReLu leakyReLu(0.1f);
-    Activation::ELU elu(0.1f);
+    Activation::LeakyReLu leakyReLu(0.1);
+    Activation::ELU elu(0.1);
     const int columnWidth = 10;
     std::cout << std::setw(columnWidth) << "Value" <<
         " -> " << std::setw(columnWidth) << "Step" << 
@@ -22,7 +23,7 @@ void ActivationTest() {
         " -> " << std::setw(columnWidth) << "LeakyReLu" <<
         " -> " << std::setw(columnWidth) << "ELU" <<
         std::endl;
-    for (float i = -1.0f; i < 1.1f; i+=0.2f) {
+    for (float i = -1.0; i < 1.1; i+=0.2) {
         std::cout.precision(6);
         std::cout << std::fixed << std::setw(columnWidth) << i << 
             " -> " << std::setw(columnWidth) << step(i) << 
@@ -37,12 +38,13 @@ void ActivationTest() {
 }
 
 void NeuronTest() {
-    Neuron n(Activation::Sigmoid{}, 1.4);
-    double output = n.getOutput();
-    std::cout << output << std::endl;
+    std::cout << "----------NeuronTest----------" << std::endl;
+    Neuron n(Activation::Sigmoid{}, 0.5);
+    n.print();
 }
 
 int main(void) {
+    ActivationTest();
     NeuronTest();
     return 0;
 }

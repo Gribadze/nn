@@ -28,18 +28,31 @@ public:
         this->calc();
     }
 
-    double getOutput() const {
-        return m_output;
+    double getInput() const {
+        return this->m_input;
     }
+
+    double getOutput() const {
+        return this->m_output;
+    }
+
+    double getDerived() const {
+        return this->m_derivedVal;
+    } 
+
+    void print() const {
+        std::cout << "{" << this->m_input << "," << this->m_output << "," << this->m_derivedVal << "}" << std::endl;
+    } 
 
 private:
     double m_input;
     double m_output;
+    double m_derivedVal;
     const Activation::IActivation &m_activation;
 
-    void calc() 
-    {
+    void calc() {
         this->m_output = this->m_activation(this->m_input);
+        this->m_derivedVal = this->m_activation.derivative(this->m_input);
     }
 };
 #endif
