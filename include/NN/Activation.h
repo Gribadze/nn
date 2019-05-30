@@ -7,20 +7,13 @@
 namespace Activation {
     class IActivation {
     public:
-        auto operator=(const IActivation &rhs) {
-            std::cout << "IActivation assignment\n";
-        }
         virtual ~IActivation() = default;
         virtual double operator()(double input) const = 0;
         virtual double derivative(double input) const = 0;
     };
-
+  
     class Step : public IActivation {
     public:
-        static Step create() {
-            Step newStep;
-            return newStep;
-        }
         double operator()(double input) const {
             return (input > 0) ? 1 : 0;
         }
