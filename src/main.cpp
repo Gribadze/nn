@@ -1,21 +1,13 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
-#include <NN/Activation.h>
-#include <NN/Neuron.h>
-#include <NN/Matrix.h>
+#include <NN/NeuralNetwork.h>
 
 using namespace std;
 
-void MatrixTest() {
-    Matrix m(3, 2, true);
-    m.print();
-    cout << "=====================" << endl;
-    Matrix mt(m.transpose());
-    mt.print();
-}
-
 int main(void) {
-    MatrixTest();
+    NeuralNetwork nn{{ 3, 2, 3 }};
+    nn.setInput({ 1, 0, 1 });
+    nn.print();
     return 0;
 }

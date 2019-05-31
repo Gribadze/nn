@@ -2,11 +2,11 @@ MD = mkdir -p
 RM = rm -rf
 # sources
 SRC_DIR = src
-_SOURCES = main.cpp Neuron.cpp Layer.cpp Matrix.cpp
+_SOURCES = main.cpp Neuron.cpp Layer.cpp Matrix.cpp NeuralNetwork.cpp
 SOURCES = $(patsubst %,$(SRC_DIR)/%, $(_SOURCES));
 # dependencies
 INCLUDE_DIR = include
-_DEPS = NN/Activation.h NN/Neuron.h NN/Matrix.h NN/Layer.h
+_DEPS = NN/Activation.h NN/Neuron.h NN/Matrix.h NN/Layer.h NN/NeuralNetwork.h
 DEPS = $(patsubst %,$(INCLUDE_DIR)/%, $(_DEPS))
 # target
 BIN_DIR = bin

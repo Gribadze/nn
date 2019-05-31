@@ -9,6 +9,7 @@ private:
     std::vector<Neuron> m_neurons;
 public:
     Layer(int size);
-    void print();
+    void setValue(int neuronNum, const double value);
+    void print() const;
 };
 #endif

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <random>
+#include <cassert>
 #include <NN/Matrix.h>
 
 using namespace std;
@@ -64,4 +65,19 @@ double Matrix::getRandomValue() const {
     mt19937 gen(rd());
     uniform_real_distribution<> dis(0.0, 1.0);
     return dis(gen);
+}
+
+Matrix operator*(const Matrix &m1, const Matrix &m2) {
+    Matrix multed{m1.getRowsCount(), m2.getColsCount()};
+    assert(m1.getColsCount() == m2.getRowsCount());
+    for (int i = 0; i < multed.getRowsCount(); i++) {
+        for (int j = 0; j < multed.getColsCount(); j++) {
+            double value = 0.0;
+            for (int r = 0; r < m1.getColsCount(); r++) {
+                value += m1.getValue(i, r) * m2.getValue(r, j);
+            }
+            multed.setValue(i, j, value);
+        }
+    }
+    return move(multed);
 }

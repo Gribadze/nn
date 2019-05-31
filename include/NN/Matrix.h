@@ -16,12 +16,14 @@ public:
     Matrix(Matrix &&rhs);
     Matrix transpose();
     void setValue(int rowNum, int colNum, double value); 
-    double getValue(int rowNum, int colNum) { return this->m_values.at(rowNum).at(colNum); }
+    double getValue(int rowNum, int colNum) const { return this->m_values.at(rowNum).at(colNum); }
     int getRowsCount() const { return this->m_rowsCount; }
     int getColsCount() const { return this->m_colsCount; }
     void print() const;
 private:
     double getRandomValue() const;
 };
+
+Matrix operator*(const Matrix &m1, const Matrix &m2);
 
 #endif

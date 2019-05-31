@@ -16,7 +16,7 @@ void Neuron::setInput(const double t_input) {
 
 void Neuron::print() const {
     cout << "{" << this->m_input << "," << this->m_output << "," << 
-        this->m_derivedVal << "}" << endl;
+        this->m_derivedVal << "}";
 } 
 
 void Neuron::calc() {

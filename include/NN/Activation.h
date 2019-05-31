@@ -39,6 +39,7 @@ namespace Activation {
     class Sigmoid : public IActivation {
     public:
         double operator()(double input) const {
+            std::cout << input << std::endl;
             return 1 / (1 + exp(-input));
         }
         double derivative(double input) const {
