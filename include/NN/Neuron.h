@@ -10,13 +10,13 @@ private:
     double m_input;
     double m_output;
     double m_derivedVal;
-    const Activation::IActivation &m_activation;
+    const Activation::IActivation *m_activation;
 public:
     explicit Neuron(
             const double t_input = 0.0, 
-            Activation::IActivation &&t_activation = Activation::Sigmoid{}
+            Activation::IActivation *t_activation = new Activation::Sigmoid()
             ); 
-    ~Neuron() {}
+    ~Neuron();
     void setInput(const double t_input);
     double getInput() const { return this->m_input; }
     double getOutput() const { return this->m_output; }
