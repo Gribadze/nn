@@ -7,12 +7,17 @@
 
 class NeuralNetwork {
 private:
-    std::vector<Layer> m_layers;
+    std::vector<Layer *> m_layers;
     std::vector<Matrix> m_weights;
+    std::vector<double> m_target;
+    double totalError;
 public:
     explicit NeuralNetwork(const std::vector<int> &topology);
-    void setInput(const std::vector<int> &inputs);
+    ~NeuralNetwork();
+    void setInput(const std::vector<double> &inputs);
+    void setTarget(const std::vector<double> &target);
     void feedForward();
+    void backPropogation();
     void print() const;
 };
 #endif

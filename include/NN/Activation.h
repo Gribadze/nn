@@ -8,12 +8,14 @@ namespace Activation {
     class IActivation {
     public:
         virtual ~IActivation() = default;
+        virtual IActivation * clone() const = 0;
         virtual double operator()(double input) const = 0;
         virtual double derivative(double input) const = 0;
     };
   
     class Step : public IActivation {
     public:
+        IActivation * clone() const { return new Step(*this); }
         double operator()(double input) const {
             return (input > 0) ? 1 : 0;
         }
@@ -25,6 +27,7 @@ namespace Activation {
     class Linear : public IActivation {
     public:
         Linear(double t_c): m_c(t_c) {}
+        IActivation * clone() const { return new Linear(*this); }
         double operator()(double input) const {
             return m_c * input;
         }
@@ -38,6 +41,7 @@ namespace Activation {
 
     class Sigmoid : public IActivation {
     public:
+        IActivation * clone() const { return new Sigmoid(*this); }
         double operator()(double input) const {
             return 1 / (1 + exp(-input));
         }
@@ -48,6 +52,7 @@ namespace Activation {
 
     class Tanh : public IActivation {
     public: 
+        IActivation * clone() const { return new Tanh(*this); }
         double operator()(double input) const {
             return (1 - exp(-2 * input)) / (1 + exp(-2 * input));
         }
@@ -58,6 +63,7 @@ namespace Activation {
 
     class ReLu : public IActivation {
     public: 
+        IActivation * clone() const { return new ReLu(*this); }
         double operator()(double input) const {
             return std::max(0.0, input);
         }
@@ -69,6 +75,7 @@ namespace Activation {
     class LeakyReLu : public IActivation {
     public:
         LeakyReLu(double t_c) : m_c(t_c) {}
+        IActivation * clone() const { return new LeakyReLu(*this); }
         double operator()(double input) const {
             return std::max(m_c * input, input);
         }
@@ -82,6 +89,7 @@ namespace Activation {
     class ELU : public IActivation {
     public:
         ELU(double t_c) : m_c(t_c) {}
+        IActivation * clone() const { return new ELU(*this); }
         double operator()(double input) const {
             return (input >= 0) ? input : m_c * (exp(input) - 1);
         }

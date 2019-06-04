@@ -3,9 +3,17 @@
 
 using namespace std;
 
-Neuron::Neuron(const double t_input, Activation::IActivation *t_activation) 
-    : m_input(t_input), m_activation(t_activation) 
+Neuron::Neuron(const double t_input, const Activation::IActivation &t_activation) 
+    : m_input(t_input) 
 {
+    this->m_activation = t_activation.clone();
+    this->calc();
+}
+
+Neuron::Neuron(const Neuron &copy)
+    : m_input(copy.m_input)
+{
+    this->m_activation = copy.m_activation->clone();
     this->calc();
 }
 
@@ -15,14 +23,13 @@ Neuron::~Neuron() {
     }
 }
 
-void Neuron::setInput(const double t_input) {
+void Neuron::setValue(const double t_input) {
     this->m_input = t_input;
     this->calc();
 }
 
 void Neuron::print() const {
-    cout << "{" << this->m_input << "," << this->m_output << "," << 
-        this->m_derivedVal << "}";
+    cout << "{" << this->getValue() << "}";
 } 
 
 void Neuron::calc() {

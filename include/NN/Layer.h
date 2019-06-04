@@ -7,16 +7,20 @@
 
 class Layer {
 private:
-    std::vector<Neuron> m_neurons;
     int m_size;
-public:
+protected:
     Layer(int size);
-    void setValue(int neuronNum, const double value);
-    void setValues(std::vector<double> values);
-    int getSize() const { return m_size; }
+    std::vector<Neuron *> m_neurons;
     Matrix getInputs() const;
     Matrix getOutputs() const;
     Matrix getDerived() const;
-    void print() const;
+public:
+    Layer(const Layer &copy);
+    virtual ~Layer();
+    int getSize() const { return m_size; }
+    void setValue(int neuronNum, const double value);
+    void setValues(std::vector<double> values);
+    virtual Matrix getValues() const;
+    virtual void print() const;
 };
 #endif
