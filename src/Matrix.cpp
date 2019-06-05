@@ -6,12 +6,12 @@
 
 using namespace std;
 
-Matrix::Matrix(int t_rowsCount, int t_colsCount, bool isRandom) 
+Matrix::Matrix(unsigned long t_rowsCount, unsigned long t_colsCount, bool isRandom)
     : m_rowsCount(t_rowsCount), m_colsCount(t_colsCount)
 {
-    for (int i = 0; i < this->m_rowsCount; i++) {
+    for (unsigned long i = 0; i < this->m_rowsCount; i++) {
         vector<double> row;
-        for (int j = 0; j < this->m_colsCount; j++) {
+        for (unsigned long j = 0; j < this->m_colsCount; j++) {
             double value = isRandom ? this->getRandomValue() : 0.0;
             row.emplace_back(value);
         }
@@ -31,13 +31,9 @@ Matrix::Matrix(const Matrix &rhs)
     }
 }
 
-Matrix::Matrix(Matrix &&rhs)
-    : m_rowsCount(rhs.m_rowsCount), m_colsCount(rhs.m_colsCount), m_values(move(rhs.m_values))
-{}
-
 Matrix & Matrix::operator=(const Matrix &rhs) {
     if (this != &rhs) {
-        this->m_values.empty();
+        this->m_values.clear();
         this->m_rowsCount = rhs.m_rowsCount;
         this->m_colsCount = rhs.m_colsCount;
         for (auto &rhs_row : rhs.m_values) {
@@ -53,22 +49,22 @@ Matrix & Matrix::operator=(const Matrix &rhs) {
 
 Matrix Matrix::transpose() {
     Matrix transposed{this->m_colsCount, this->m_rowsCount};
-    for (int i = 0; i < this->m_rowsCount; i++) {
-        for (int j = 0; j < this->m_colsCount; j++) {
+    for (unsigned long i = 0; i < this->m_rowsCount; i++) {
+        for (unsigned long j = 0; j < this->m_colsCount; j++) {
             transposed.setValue(j, i, this->m_values.at(i).at(j));
         }
     }
     return move(transposed);
 }
 
-void Matrix::setValue(int rowNum, int colNum, double value) {
+void Matrix::setValue(unsigned long rowNum, unsigned long colNum, double value) {
     this->m_values.at(rowNum).at(colNum) = value;
 }
 
 vector<double> Matrix::toVector() const {
     vector<double> result;
-    for (int i = 0; i < this->m_rowsCount; i++) {
-        for (int j = 0; j < this->m_colsCount; j++) {
+    for (unsigned long i = 0; i < this->m_rowsCount; i++) {
+        for (unsigned long j = 0; j < this->m_colsCount; j++) {
             result.push_back(this->m_values.at(i).at(j));
         }
     }
@@ -85,7 +81,7 @@ void Matrix::print() const {
     }
 }
 
-double Matrix::getRandomValue() const {
+double Matrix::getRandomValue() {
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<> dis(0.0, 1.0);
@@ -93,16 +89,16 @@ double Matrix::getRandomValue() const {
 }
 
 Matrix operator*(const Matrix &m1, const Matrix &m2) {
-    Matrix multed{m1.getRowsCount(), m2.getColsCount()};
+    Matrix multiplied{m1.getRowsCount(), m2.getColsCount()};
     assert(m1.getColsCount() == m2.getRowsCount());
-    for (int i = 0; i < multed.getRowsCount(); i++) {
-        for (int j = 0; j < multed.getColsCount(); j++) {
+    for (unsigned long i = 0; i < multiplied.getRowsCount(); i++) {
+        for (unsigned long j = 0; j < multiplied.getColsCount(); j++) {
             double value = 0.0;
-            for (int r = 0; r < m1.getColsCount(); r++) {
+            for (unsigned long r = 0; r < m1.getColsCount(); r++) {
                 value += m1.getValue(i, r) * m2.getValue(r, j);
             }
-            multed.setValue(i, j, value);
+            multiplied.setValue(i, j, value);
         }
     }
-    return move(multed);
+    return move(multiplied);
 }

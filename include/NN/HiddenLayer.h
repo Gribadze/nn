@@ -3,10 +3,12 @@
 
 #include <NN/Layer.h>
 
-class HiddenLayer: public Layer {
+class HiddenLayer : public Layer {
 public:
-    HiddenLayer(int size);
-    void print() const;
+    explicit HiddenLayer(unsigned long size);
+
+    void print() const override;
 };
+
 #endif
 

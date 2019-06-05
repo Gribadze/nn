@@ -6,10 +6,101 @@
             "-Iinclude", 
             "-g", 
             "-o", 
+            "bin/obj/NeuralNetwork.o", 
+            "src/NeuralNetwork.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/NeuralNetwork.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
+            "bin/obj/Matrix.o", 
+            "src/Matrix.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/Matrix.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g",
+            "-o",
+            "bin/obj/OutputLayer.o",
+            "src/OutputLayer.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/OutputLayer.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
             "bin/obj/main.o", 
             "src/main.cpp"
         ], 
         "directory": "/home/dmitry/Documents/C/NN", 
         "file": "src/main.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
+            "bin/obj/InputLayer.o", 
+            "src/InputLayer.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/InputLayer.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
+            "bin/obj/HiddenLayer.o", 
+            "src/HiddenLayer.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/HiddenLayer.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
+            "bin/obj/Neuron.o", 
+            "src/Neuron.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/Neuron.cpp"
+    }, 
+    {
+        "arguments": [
+            "g++", 
+            "-c", 
+            "-Iinclude", 
+            "-g", 
+            "-o", 
+            "bin/obj/Layer.o", 
+            "src/Layer.cpp"
+        ], 
+        "directory": "/home/dmitry/Documents/C/NN", 
+        "file": "src/Layer.cpp"
     }
 ]

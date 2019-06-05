@@ -4,14 +4,12 @@
 
 using namespace std;
 
-Layer::Layer(int size)
-    : m_size(size)
-{}
+Layer::Layer(unsigned long size)
+        : m_size(size) {}
 
 Layer::Layer(const Layer &copy)
-    : m_size(copy.m_size)
-{
-    for (int i = 0; i < this->m_size; i++) {
+        : m_size(copy.m_size) {
+    for (unsigned long i = 0; i < this->m_size; i++) {
         this->m_neurons.push_back(copy.m_neurons.at(i)->clone());
     }
 }
@@ -22,20 +20,20 @@ Layer::~Layer() {
     }
 }
 
-void Layer::setValue(int neuronNum, const double value) {
+void Layer::setValue(unsigned long neuronNum, const double value) {
     this->m_neurons.at(neuronNum)->setValue(value);
 }
 
-void Layer::setValues(vector<double> values) {
+void Layer::setValues(const vector<double> &values) {
     assert(values.size() == this->m_size);
-    for (int i = 0; i < this->m_size; i++) {
+    for (unsigned long i = 0; i < this->m_size; i++) {
         this->m_neurons.at(i)->setValue(values.at(i));
     }
 }
 
 Matrix Layer::getValues() const {
     Matrix inputs(1, this->m_size);
-    for (int i = 0; i < this->m_size; i++) {
+    for (unsigned long i = 0; i < this->m_size; i++) {
         inputs.setValue(0, i, this->m_neurons.at(i)->getValue());
     }
     return std::move(inputs);

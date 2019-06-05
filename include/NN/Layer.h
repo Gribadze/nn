@@ -7,20 +7,25 @@
 
 class Layer {
 private:
-    int m_size;
+    unsigned long m_size;
 protected:
-    Layer(int size);
+    explicit Layer(unsigned long size);
+
     std::vector<Neuron *> m_neurons;
-    Matrix getInputs() const;
-    Matrix getOutputs() const;
-    Matrix getDerived() const;
 public:
     Layer(const Layer &copy);
+
     virtual ~Layer();
+
     int getSize() const { return m_size; }
-    void setValue(int neuronNum, const double value);
-    void setValues(std::vector<double> values);
+
+    void setValue(unsigned long neuronNum, double value);
+
+    void setValues(const std::vector<double> &values);
+
     virtual Matrix getValues() const;
+
     virtual void print() const;
 };
+
 #endif

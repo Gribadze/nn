@@ -3,10 +3,11 @@
 
 #include <NN/Layer.h>
 
-class OutputLayer: public Layer {
+class OutputLayer : public Layer {
 public:
-    OutputLayer(int size);
-    void print() const;
+    explicit OutputLayer(unsigned long size);
+
+    void print() const override;
 };
 
 #endif

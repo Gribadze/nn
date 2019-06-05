@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <vector>
-#include <NN/Activation.h>
+#include <NN/Activation/IActivation.h>
+#include <NN/Activation/Sigmoid.h>
+#include <NN/Activation/Tanh.h>
 
 class Neuron {
 private:
@@ -12,20 +14,31 @@ private:
     const Activation::IActivation *m_activation;
 protected:
     double m_input;
+
     explicit Neuron(
-            const double t_input = 0.0, 
+            double t_input = 0.0,
             const Activation::IActivation &t_activation = Activation::Sigmoid()
-            ); 
+    );
+
     double getInput() const { return this->m_input; }
+
     double getOutput() const { return this->m_output; }
+
 public:
     Neuron(const Neuron &copy);
+
     virtual ~Neuron();
-    virtual Neuron * clone() const = 0;
-    virtual void setValue(const double t_input);
+
+    virtual Neuron *clone() const = 0;
+
+    virtual void setValue(double t_input);
+
     virtual double getValue() const = 0;
+
     virtual void print() const;
-    double getDerived() const { return this->m_derivedVal; } 
+
+    double getDerived() const { return this->m_derivedVal; }
+
 private:
     void calc();
 };

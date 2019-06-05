@@ -10,14 +10,21 @@ private:
     std::vector<Layer *> m_layers;
     std::vector<Matrix> m_weights;
     std::vector<double> m_target;
-    double totalError;
+    double m_errorTotal;
 public:
     explicit NeuralNetwork(const std::vector<int> &topology);
+
     ~NeuralNetwork();
+
     void setInput(const std::vector<double> &inputs);
-    void setTarget(const std::vector<double> &target);
+
+    void setTarget(const std::vector<double> &targets);
+
     void feedForward();
+
     void backPropogation();
+
     void print() const;
 };
+
 #endif

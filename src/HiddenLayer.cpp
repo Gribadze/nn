@@ -4,10 +4,9 @@
 
 using namespace std;
 
-HiddenLayer::HiddenLayer(int size)
-    : Layer(size)
-{
-    for (int i = 0; i < size; i++) {
+HiddenLayer::HiddenLayer(unsigned long size)
+        : Layer(size) {
+    for (unsigned long i = 0; i < size; i++) {
         this->m_neurons.push_back(new HiddenNeuron());
     }
 }
