@@ -6,6 +6,7 @@
 #include <NN/Activation/IActivation.h>
 #include <NN/Activation/Sigmoid.h>
 #include <NN/Activation/Tanh.h>
+#include <NN/Activation/ActivationFactory.h>
 
 class Neuron {
 private:
@@ -17,7 +18,7 @@ protected:
 
     explicit Neuron(
             double t_input = 0.0,
-            const Activation::IActivation &t_activation = Activation::Sigmoid()
+            Activation::IActivation *t_activation = Activation::ActivationFactory::create(Activation::ActivationType::Sigmoid)
     );
 
     double getInput() const { return this->m_input; }

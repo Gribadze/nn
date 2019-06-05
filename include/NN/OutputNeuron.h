@@ -5,6 +5,8 @@
 
 class OutputNeuron : public Neuron {
 public:
+    OutputNeuron(): Neuron() {}
+
     Neuron *clone() const override { return new OutputNeuron(*this); }
 
     double getValue() const override { return this->getInput(); }

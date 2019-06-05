@@ -6,7 +6,7 @@ _SOURCES = main.cpp Neuron.cpp Layer.cpp Matrix.cpp NeuralNetwork.cpp InputLayer
 SOURCES = $(patsubst %,$(SRC_DIR)/%, $(_SOURCES));
 # dependencies
 INCLUDE_DIR = include
-_DEPS = Activation/IActivation.h Activation/Sigmoid.h Activation/Tanh.h Neuron.h Matrix.h Layer.h NeuralNetwork.h InputLayer.h HiddenLayer.h OutputLayer.h InputNeuron.h HiddenNeuron.h OutputNeuron.h
+_DEPS = Activation/IActivation.h Activation/Sigmoid.h Activation/Tanh.h Activation/ActivationFactory.h Neuron.h Matrix.h Layer.h NeuralNetwork.h InputLayer.h HiddenLayer.h OutputLayer.h InputNeuron.h HiddenNeuron.h OutputNeuron.h
 DEPS = $(patsubst %,$(INCLUDE_DIR)/NN/%, $(_DEPS))
 # target
 BIN_DIR = bin

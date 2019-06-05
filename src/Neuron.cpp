@@ -3,9 +3,9 @@
 
 using namespace std;
 
-Neuron::Neuron(const double t_input, const Activation::IActivation &t_activation)
-        : m_input(t_input) {
-    this->m_activation = t_activation.clone();
+Neuron::Neuron(const double t_input, Activation::IActivation *t_activation)
+        : m_input(t_input), m_output(0.0), m_derivedVal(0.0) {
+    this->m_activation = t_activation->clone();
     this->calc();
 }
 
